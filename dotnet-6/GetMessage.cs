@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Reflection;
@@ -16,6 +17,8 @@ namespace StaticWebAppsEndToEndTesting.GetMessage
         {
             var response = req.CreateResponse(HttpStatusCode.OK);
             string message = File.ReadAllText(Path.Join(Environment.CurrentDirectory, "content.txt"));
+            var environmentVariables = Environment.GetEnvironmentVariables();
+            message = JsonConvert.SerializeObject(environmentVariables);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
             response.WriteString(message);
             return response;
