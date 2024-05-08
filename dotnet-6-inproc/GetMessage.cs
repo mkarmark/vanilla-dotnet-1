@@ -9,6 +9,8 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace StaticWebAppsEndToEndTesting.GetMessage
 {
@@ -22,6 +24,8 @@ namespace StaticWebAppsEndToEndTesting.GetMessage
         {
             log.LogInformation("C# HTTP trigger function processed a request! :) ");
             string message = File.ReadAllText(context.FunctionAppDirectory + "/content.txt");
+            var environmentVariables = Environment.GetEnvironmentVariables();
+            message = JsonConvert.SerializeObject(environmentVariables);
             return new OkObjectResult(message);
         }
     }
