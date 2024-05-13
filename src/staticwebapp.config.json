@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "userDetailsClaim": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/common/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretCertificateKeyVaultReference": "@Microsoft.KeyVault(SecretUri=https://mikarmar-swa-byof-kv.vault.azure.net/certificates/mikarmar-swa-byof-cert/287e25f9fb144d02a187022548af26a0)",
+          "clientSecretCertificateThumbprint": "*"
+        }
+      }
+    }
+  }
+}
