@@ -24,19 +24,5 @@ namespace StaticWebAppsEndToEndTesting.GetMessage
             response.WriteString(message);
             return response;
         }
-
-        [Function("GetRoles")]
-        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
-        {
-            var response = req.CreateResponse(HttpStatusCode.OK);
-            var roles = new List<string>
-            {
-                "customRole"
-            };
-            string message = JsonConvert.SerializeObject(roles);
-            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-            response.WriteString(message);
-            return response;
-        }
     }
 }
