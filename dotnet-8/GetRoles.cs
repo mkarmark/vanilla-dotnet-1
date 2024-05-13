@@ -23,7 +23,11 @@ namespace StaticWebAppsEndToEndTesting.GetRoles
                 "customRole",
                 requestBody
             };
-            string message = JsonConvert.SerializeObject(roles);
+            var dict = new Dictionary<string, List<string>>
+            {
+                ["roles"] = roles
+            };
+            string message = JsonConvert.SerializeObject(dict);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
             response.WriteString(message);
             return response;
