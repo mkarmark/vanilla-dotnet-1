@@ -16,10 +16,14 @@ namespace StaticWebAppsEndToEndTesting.GetRoles
         [Function("GetRoles")]
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
+            string requestBody = new StreamReader(req.Body).ReadToEnd();
+            dynamic data = JsonConvert.DeserializeObject(requestBody);
+ 
             var response = req.CreateResponse(HttpStatusCode.OK);
             var roles = new List<string>
             {
-                "customRole"
+                "customRole",
+                data.accessToken ?? string.Empty
             };
             string message = JsonConvert.SerializeObject(roles);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
