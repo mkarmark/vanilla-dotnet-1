@@ -9,9 +9,9 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace StaticWebAppsEndToEndTesting.GetMessage
+namespace StaticWebAppsEndToEndTesting.GetRoles
 {
-    public class GetMessage
+    public class GetRoles
     {
         [Function("GetRoles")]
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
