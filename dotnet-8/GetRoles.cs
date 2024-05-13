@@ -20,7 +20,7 @@ namespace StaticWebAppsEndToEndTesting.GetRoles
             var response = req.CreateResponse(HttpStatusCode.OK);
             var roles = new List<string>
             {
-                "customRole",
+                "customRole1",
                 requestBody
             };
             var dict = new Dictionary<string, List<string>>
